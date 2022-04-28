@@ -36,7 +36,6 @@ function searchTestKit(pharmacyId, lines) {
 function getAvailableTestKitDataLists(testKitDataUrl) {
 
     $.get(testKitDataUrl, function(data) {
-        // 醫事機構代碼,醫事機構名稱,醫事機構地址,醫事機構電話,成人口罩總剩餘數,兒童口罩剩餘數,來源資料時間
         // 醫事機構代碼,醫事機構名稱,醫事機構地址,經度,緯度,醫事機構電話,廠牌項目,快篩試劑截至目前結餘存貨數量,來源資料時間,備註
         var allTextLines = data.split(/\r\n|\n/);
         var headers = allTextLines[0].split(',');
