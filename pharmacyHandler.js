@@ -97,7 +97,7 @@ function getAvailableTestKitDataLists(testKitDataUrl) {
                 "<h6 class='card-subtitle mb-2 text-muted mask-info'>", updatedTime, "</h6>",
                 "</p>",
                 "<a href = '", mapURL, "' target='_blank' class='card-link'>地圖連結</a>",
-                "<a href = 'http://www.nhi.gov.tw/QueryN/Query3_Detail.aspx?HospID=", lines[item][0].split(':')[1], "' target='_blank' class='card-link'>中央健保署連結</a>",
+                "<a href = 'https://www.nhi.gov.tw/QueryN/Query3_Detail.aspx?HospID=", lines[item][0].split(':')[1], "' target='_blank' class='card-link'>中央健保署連結</a>",
                 "</div>"
             ].join("");
             $("#list").append(content);
