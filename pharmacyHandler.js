@@ -3,17 +3,28 @@
  */
 
 $(function() {
-    let testKitDataUrl = "https://data.nhi.gov.tw/resource/Nhi_Fst/Fstdata.csv";
-
-    initialize();
-    getAvailableTestKitDataLists(testKitDataUrl);
-    setFilterDataBtn();
-    setShowAllDataBtn();
+    initializeAllDataSource();
+    $("#update").on("click", function() {
+        initializeAllDataSource('update');
+    });
 });
 
 function initialize() {
     $("#search").attr("disabled", true);
     $("#myInput").val("");
+    $("#update").hide();
+}
+
+function initializeAllDataSource(action="") {
+    let testKitDataUrl = "https://data.nhi.gov.tw/resource/Nhi_Fst/Fstdata.csv";
+    initialize();
+    getAvailableTestKitDataLists(testKitDataUrl);
+    setFilterDataBtn();
+    if (action === "") {
+        setShowAllDataBtn();
+    } else {
+        showLoadingBar();
+    }
 }
 
 function searchTestKit(pharmacyId, lines) {
@@ -35,7 +46,12 @@ function searchTestKit(pharmacyId, lines) {
 
 function getAvailableTestKitDataLists(testKitDataUrl) {
 
-    $.get(testKitDataUrl, function(data) {
+    $("#list").html("");
+    $.get(testKitDataUrl, function(data, eventMessage) {
+        if (eventMessage !== 'success') {
+            $("#list").html("擷取資料錯誤！");
+        }
+
         // 醫事機構代碼,醫事機構名稱,醫事機構地址,經度,緯度,醫事機構電話,廠牌項目,快篩試劑截至目前結餘存貨數量,來源資料時間,備註
         var allTextLines = data.split(/\r\n|\n/);
         var headers = allTextLines[0].split(',');
@@ -105,6 +121,8 @@ function getAvailableTestKitDataLists(testKitDataUrl) {
             $("#msg").hide();
             $("#search").attr("disabled", false);
         }
+
+        $("#update").show();
     });
 }
 
@@ -124,14 +142,18 @@ function setShowAllDataBtn() {
         $("#myInput").val("");
         $("#search").attr("disabled", true);
         $("#list").hide();
-        $("#loading").show("fast", function() {
-            $("#list div").filter(function() {
-                $(this).toggle(true);
-                $("#loading").hide();
-                $("#list").show();
-                $("#msg").hide();
-                $("#search").attr("disabled", false);
-            });
+        showLoadingBar();
+    });
+}
+
+function showLoadingBar() {
+    $("#loading").show("fast", function() {
+        $("#list div").filter(function() {
+            $(this).toggle(true);
+            $("#loading").hide();
+            $("#list").show();
+            $("#msg").hide();
+            $("#search").attr("disabled", false);
         });
     });
 }
