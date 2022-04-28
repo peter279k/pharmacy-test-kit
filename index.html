@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>藥局家用快篩試劑查詢列表</title>
+    <meta charset="utf-8">
+    <meta name="author" content="SOSELab@NTOU">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="pharmacyStyle.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" src="pharmacyHandler.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- template
+    <div class="card" style="width: 18rem;" id="list">
+        <div class="card-body">
+            <h5 class="card-title">健保診所</h5>
+            <h6 class="card-subtitle mb-2 text-muted">住址與電話</h6>
+            <a href="#" class="card-link">地圖連結</a>
+            <a href="#" class="card-link">中央健保署連結</a>
+        </div>
+    </div>
+    -->
+
+    <h5 style="margin:20px;color:navy">我要買快篩 <a target="_blank" href="https://www.mohw.gov.tw/cp-5267-69284-1.html">如何購買家用快篩？</a></h5>
+    <p>
+        <label style="margin-left:20px;">請輸入關鍵字過濾(如基隆市中正區):
+            <input id="myInput" type="text" placeholder="Search.." />
+            <input id="search" type="button" value="過濾" />
+        </label>
+    </p>
+    <p>
+        <label>
+            <input id="all" style="margin-left:20px;" type="button" value="全部顯示" />
+        </label>
+    </p>
+    <span id="msg" style="margin-left:20px;">(載入全部資料需花一點時間，請稍候)</span>
+
+    <div class="loader" id="loading" style="margin:20px;"></div>
+
+    <div class="card" style="margin:20px;" id="list"></div>
+
+</body>
+
+</html>
