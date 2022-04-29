@@ -104,7 +104,7 @@ function getAvailableTestKitDataLists(testKitDataUrl) {
                 "<h6 class='card-subtitle mb-2 text-danger mask-info'>", testKitVendorName, "</h6>",
                 "</p>",
                 "<p>",
-                "<h6 class='card-subtitle mb-2 text-danger mask-info'>", testKitNumber, "</h6>",
+                "<h6 class='card-subtitle mb-2 text-danger mask-info'>", testKitNumber, "份</h6>",
                 "</p>",
                 "<p>",
                 "<h6 class='card-subtitle mb-2 text-muted mask-info'>", message, "</h6>",
