@@ -10,7 +10,7 @@ $(function() {
 
     const appwrite = new Appwrite();
     appwrite
-        .setEndpoint('http://pharmacy-test-kit.peterli.website/v1')
+        .setEndpoint('https://pharmacy-test-kit.peterli.website/v1')
         .setProject('627b5beef12cb7a19ae3');
     appwrite.subscribe('files', response => {
         if(response.event === 'storage.files.create') {
