@@ -7,6 +7,16 @@ $(function() {
     $("#update").on("click", function() {
         initializeAllDataSource('update');
     });
+
+    const appwrite = new Appwrite();
+    appwrite
+        .setEndpoint('http://pharmacy-test-kit.peterli.website/v1')
+        .setProject('627b5beef12cb7a19ae3');
+    appwrite.subscribe('files', response => {
+        if(response.event === 'storage.files.create') {
+            console.log(response.payload);
+        }
+    });
 });
 
 function initialize() {
